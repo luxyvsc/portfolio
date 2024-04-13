@@ -19,7 +19,7 @@ export class ExperiencesComponent {
     },
     {
       summary: {
-        strong: 'front-end treinee',
+        strong: 'front-end trainee',
         p: 'IMOBZI | JUL 2022 - JUL 2023',
       },
       text: '<p>Durante este período eu flutuei entre pequenas alterações e algumas tarefas/implementações um pouco mais complexas</p>',

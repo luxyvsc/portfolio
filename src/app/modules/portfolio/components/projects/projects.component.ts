@@ -21,22 +21,7 @@ import { DialogProjectsComponent } from '../../dialog/dialog-projects/dialog-pro
 })
 export class ProjectsComponent {
   #dialog = inject(MatDialog)
-  public arrayProjects = signal<IProjects[]>([
-    {
-      src: 'assets/img/jujutsu-kaisen.jpg',
-      alt: 'Projeto site jujutsu kaisen',
-      title: 'Site jujutsu kaisen',
-      width: '100px',
-      height: '51px',
-      description: 'Explore o fascinante mundo do desenvolvimento web no meu blog dedicado exclusivamente a JUJUTSU KAISEN, front-end com angular e back com nodeJS',
-      links: [
-        {
-          name: 'Conheçam meu site sobre jujutsu',
-          href: ''
-        }
-      ]
-    },
-  ])
+  public arrayProjects = signal<IProjects[]>([])
 
   public openDialog(data: IProjects) {
     this.#dialog.open(DialogProjectsComponent, {

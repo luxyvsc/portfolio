@@ -1,8 +1,10 @@
 <header>
   <h2 mat-dialog-title>{{getData.title}}</h2>
 
-  <button (click)="closeModal()">
-    <img src="assets/icons/dialog/close.svg" alt="botão para fechar o dialog"/>
+  <button type="button" class="close-btn" (click)="closeModal()" aria-label="Fechar diálogo">
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7a1 1 0 0 0-1.41 1.42L10.59 12l-4.9 4.89a1 1 0 1 0 1.41 1.42L12 13.41l4.89 4.9a1 1 0 0 0 1.42-1.41L13.41 12l4.9-4.89a1 1 0 0 0-.01-1.4Z"/>
+    </svg>
   </button>
 </header>
 

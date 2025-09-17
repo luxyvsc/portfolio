@@ -30,7 +30,7 @@ export class ProjectsComponent {
       height: '160',
       description: 'Esta aplicação é uma Pokédex desenvolvida em Angular que permite pesquisar, listar e visualizar detalhes de pokémons utilizando a PokeAPI. Com uma interface intuitiva, o usuário pode buscar pokémons pelo nome, navegar por uma lista paginada e acessar informações detalhadas de cada pokémon. O projeto demonstra integração com APIs REST, uso de componentes reutilizáveis e boas práticas de desenvolvimento frontend com Angular.',
       links: [
-        { name: 'Site', href: 'https://luxyvsc.github.io/pokemonsList' },
+        { name: 'Site', href: 'https://pokemonlist-vsc377.rj.r.appspot.com' },
         { name: 'GitHub', href: 'https://github.com/luxyvsc/pokemonsList' }
       ]
     }

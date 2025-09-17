@@ -11,15 +11,17 @@ import { IProjects } from '../../interface/IProjects.interface';
   templateUrl: './dialog-projects.component.html',
   styleUrl: './dialog-projects.component.scss'
 })
-export class DialogProjectsComponent implements OnInit {
+export class DialogProjectsComponent {
+  #data: IProjects;
   constructor(
     private _dialogRef: MatDialogRef<DialogProjectsComponent>,
-    @Inject(MAT_DIALOG_DATA) private _data: IProjects
-  ) { }
-  public getData = signal<IProjects | null>(null)
+    @Inject(MAT_DIALOG_DATA) data: IProjects
+  ) {
+    this.#data = data;
+  }
 
-  ngOnInit(): void {
-      this.getData.set(this._data);
+  get getData() {
+    return this.#data;
   }
 
   public closeModal() {

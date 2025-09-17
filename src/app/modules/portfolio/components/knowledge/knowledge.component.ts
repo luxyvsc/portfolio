@@ -11,7 +11,7 @@ import { Knowledge } from '../../interface/IKnowledge.interface';
   styleUrl: './knowledge.component.scss'
 })
 export class KnowledgeComponent {
-  public arrayKnowledge = signal<Knowledge[]>([
+  #arrayKnowledge = signal<Knowledge[]>([
     {
       src: 'assets/icons/knowledge/angular.svg',
       alt: 'Ícone de conhecimento angular'
@@ -36,5 +36,9 @@ export class KnowledgeComponent {
       src: 'assets/icons/knowledge/python.svg',
       alt: 'Ícone de conhecimento Python'
     },
-  ])
+  ]);
+
+  get arrayKnowledge() {
+    return this.#arrayKnowledge();
+  }
 }

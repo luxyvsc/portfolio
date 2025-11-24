@@ -195,11 +195,44 @@ Deve retornar: `{"status":"ok"}`
 
 ## 🔒 Segurança (Opcional)
 
-Para produção, considere adicionar:
-- Autenticação (JWT, API Keys)
-- Rate limiting
-- Validação de dados
-- HTTPS (já incluído nos serviços recomendados)
+### Para um portfolio pessoal simples:
+A API atual é suficiente para uso pessoal onde você é o único editor. Ela já possui:
+- ✅ Validação de entrada
+- ✅ Tratamento de erros
+- ✅ CORS configurado
+
+### Para uso em produção com múltiplos usuários:
+Considere adicionar:
+
+1. **Rate Limiting** - Prevenir abuso da API:
+```bash
+npm install express-rate-limit
+```
+
+```javascript
+const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 100 // limite de 100 requisições por IP
+});
+
+app.use('/api/', limiter);
+```
+
+2. **Autenticação** - Proteger operações de escrita:
+```bash
+npm install jsonwebtoken
+```
+
+3. **Validação mais robusta**:
+```bash
+npm install joi
+```
+
+4. **HTTPS** - Já incluído nos serviços recomendados (Render, Railway, etc.)
+
+**Nota**: Para um portfólio pessoal onde só você adiciona projetos, a implementação atual é adequada. As melhorias de segurança são recomendadas apenas se você planeja permitir que outros usuários interajam com a API.
 
 ## 💡 Dicas
 

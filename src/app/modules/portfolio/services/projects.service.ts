@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IProjects } from '../interface/IProjects.interface';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,8 @@ import { IProjects } from '../interface/IProjects.interface';
 export class ProjectsService {
   #http = inject(HttpClient);
   
-  // URL da API - altere para a URL da sua API em produção
-  // Exemplo: 'https://portfolio-api-xxxx.onrender.com/api/projects'
-  private apiUrl = 'http://localhost:3000/api/projects';
+  // URL da API configurada no arquivo de ambiente
+  private apiUrl = environment.apiUrl;
 
   getProjects(): Observable<IProjects[]> {
     return this.#http.get<IProjects[]>(this.apiUrl);

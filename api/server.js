@@ -32,6 +32,12 @@ app.post('/api/projects', (req, res) => {
     const projects = JSON.parse(data);
     
     const newProject = req.body;
+    
+    // Validação básica dos campos obrigatórios
+    if (!newProject.title || !newProject.src || !newProject.description) {
+      return res.status(400).json({ error: 'Campos obrigatórios: title, src, description' });
+    }
+    
     projects.push(newProject);
     
     fs.writeFileSync(projectsFilePath, JSON.stringify(projects, null, 2));
@@ -49,7 +55,7 @@ app.put('/api/projects/:index', (req, res) => {
     const projects = JSON.parse(data);
     
     const index = parseInt(req.params.index);
-    if (index < 0 || index >= projects.length) {
+    if (isNaN(index) || index < 0 || index >= projects.length) {
       return res.status(404).json({ error: 'Projeto não encontrado' });
     }
     
@@ -69,7 +75,7 @@ app.delete('/api/projects/:index', (req, res) => {
     const projects = JSON.parse(data);
     
     const index = parseInt(req.params.index);
-    if (index < 0 || index >= projects.length) {
+    if (isNaN(index) || index < 0 || index >= projects.length) {
       return res.status(404).json({ error: 'Projeto não encontrado' });
     }
     

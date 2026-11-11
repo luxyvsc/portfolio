@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { I18nService } from '../../../../core/services/i18n.service';
 
 //components
 import { HeaderComponent } from '../../components/header/header.component';
@@ -14,5 +15,7 @@ import { ProjectsComponent } from '../../components/projects/projects.component'
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  public readonly i18n = inject(I18nService);
+  public readonly year = new Date().getFullYear();
 
 }

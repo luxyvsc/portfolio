@@ -1,14 +1,48 @@
-:root {
+// Naming: --black = page background, --white = main text, --grey = muted text.
+// Light is the default theme; dark is applied with [data-theme="dark"] on <html>.
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
   --primary: #2fbf71;
   --primary-010: #21804d;
+  --primary-text: #168a4a;
+  --primary-soft: rgba(47, 191, 113, 0.12);
+  --on-primary: #0d0d14;
 
   --secondary: #06628a;
   --secondary-010: #06374e;
 
+  --white: #14141c;
+  --black: #f6f7f9;
+  --black-010: #e9ebef;
+  --surface: #ffffff;
+  --surface-2: #f1f3f6;
+  --border: #e2e5ea;
+  --grey: #555863;
+
+  --topbar-bg: rgba(246, 247, 249, 0.85);
+  --shadow-lg: rgba(16, 24, 40, 0.12);
+  --icon-filter: invert(1) brightness(0.25);
+
+  --radius: 14px;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --primary-text: #2fbf71;
+  --on-primary: #0d0d14;
+
   --white: #fff;
-
-  --black: #10101a;
+  --black: #0d0d14;
   --black-010: #2a2a30;
+  --surface: #15151f;
+  --surface-2: #1c1c28;
+  --border: #2a2a38;
+  --grey: #a3a3ad;
 
-  --grey: #9b9ba0;
+  --topbar-bg: rgba(13, 13, 20, 0.8);
+  --shadow-lg: rgba(0, 0, 0, 0.45);
+  --icon-filter: none;
 }

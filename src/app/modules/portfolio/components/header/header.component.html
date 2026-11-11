@@ -1,79 +1,85 @@
-<header>
-  <img
-    src="assets/img/pedro.jpg"
-    alt="Pedro Tostes - Foto de Perfil"
-    width="130px"
-    height="130px"
-    loading="eager"/>
+<nav class="topbar">
+  <div class="container topbar__inner">
+    <a href="#inicio" class="topbar__brand">Pedro<span>.</span></a>
 
-    <h1>Pedro Tostes</h1>
-</header>
+    <ul class="topbar__links">
+      <li><a href="#conhecimentos">{{ i18n.t('nav.skills') }}</a></li>
+      <li><a href="#experiencias">{{ i18n.t('nav.experience') }}</a></li>
+      <li><a href="#projetos">{{ i18n.t('nav.projects') }}</a></li>
+      <li><a href="#contato">{{ i18n.t('nav.contact') }}</a></li>
+    </ul>
 
-<aside>
-    <div class="container">
-      <p>Full Stack Javascript | Angular | NodeJS | Python</p>
-      <p>São Paulo, São Paulo, Brasil</p>
-      <p>
-        Sou desenvolvedor front-end pleno com experiência sólida em Angular. Tenho vivência em desenvolvimento de temas, interfaces e soluções personalizadas para grandes clientes, sempre focando em performance, responsividade e experiência do usuário.<br><br>
-        Além disso, estou cursando Inteligência Artificial e me aprofundando em machine learning e deep learning, ampliando minha atuação para projetos que envolvem análise de dados, automação e soluções inteligentes com Python.<br><br>
-        Busco unir tecnologia, criatividade e inovação para entregar resultados de alto impacto e valor para empresas e pessoas.
-      </p>
+    <div class="topbar__controls">
+      <div class="lang-switch" role="group" [attr.aria-label]="i18n.t('nav.language')">
+        <button type="button" [class.active]="i18n.lang() === 'pt'" [attr.aria-pressed]="i18n.lang() === 'pt'" (click)="i18n.setLang('pt')" lang="pt-BR">PT</button>
+        <button type="button" [class.active]="i18n.lang() === 'en'" [attr.aria-pressed]="i18n.lang() === 'en'" (click)="i18n.setLang('en')" lang="en">EN</button>
+      </div>
+
+      <button
+        type="button"
+        class="theme-toggle"
+        (click)="theme.toggle()"
+        [attr.aria-label]="theme.theme() === 'light' ? i18n.t('nav.themeToDark') : i18n.t('nav.themeToLight')"
+        [title]="theme.theme() === 'light' ? i18n.t('nav.themeToDark') : i18n.t('nav.themeToLight')">
+        @if (theme.theme() === 'light') {
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z"/></svg>
+        } @else {
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        }
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header id="inicio" class="hero">
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <span class="hero__badge">
+        <i></i> {{ i18n.t('hero.badge') }}
+      </span>
+
+      <h1>{{ i18n.t('hero.greeting') }} <strong>Pedro Tostes</strong></h1>
+      <p class="hero__role">Full Stack Javascript · Angular · NodeJS · Python · IA</p>
+
+      <p>{{ i18n.t('hero.bio1') }}</p>
+      <p>{{ i18n.t('hero.bio2') }}</p>
+
+      <p class="hero__location">📍 {{ i18n.t('hero.location') }}</p>
+
+      <div class="hero__actions">
+        <a href="assets/curriculo.pdf" target="_blank" class="btn btn-primary">{{ i18n.t('hero.resume') }}</a>
+        <a href="https://www.linkedin.com/in/pedro-lucas-458917207/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+        <a href="#projetos" class="btn btn-ghost">{{ i18n.t('hero.seeProjects') }}</a>
+      </div>
     </div>
 
-    <nav>
-      <ul>
-        <li>
-          <a
-            href="assets/curriculo.pdf"
-            target="_blank"
-            class="btn btn-primary">
-            Curriculo
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/pedro-lucas-458917207/"
-            target="_blank"
-            class="btn btn-secondary">
-            Linkedin
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <div class="hero__photo">
+      <img
+        src="assets/img/pedro.jpg"
+        [alt]="i18n.t('hero.photoAlt')"
+        width="320"
+        height="320"
+        loading="eager"/>
+    </div>
+  </div>
+</header>
 
-    <section>
-      <figure>
-        <img
-          src="assets/icons/whatsapp.svg"
-          alt="Icone para contato do whatsapp"
-          width="22px"
-          height="24px">
+<section id="contato" class="contact">
+  <div class="container contact__inner">
+    <a href="https://api.whatsapp.com/send?phone=5511993922787" target="_blank" class="contact__card">
+      <img src="assets/icons/whatsapp.svg" alt="" width="22" height="24">
+      <div>
+        <strong>WhatsApp</strong>
+        <p>(11) 9 9392-2787</p>
+      </div>
+    </a>
 
-          <figcaption>
-            <a
-            href="https://api.whatsapp.com/send?phone=5511993922787"
-            target="_blank">
-              <strong>Envie uma Mensagem para:</strong>
-              <p>Whatsapp: (11) 9 9392-2787</p>
-            </a>
-          </figcaption>
-      </figure>
-
-      <figure>
-        <img
-          src="assets/icons/mail.svg"
-          alt="Icone para contato do e-mail"
-          width="22px"
-          height="24px">
-
-          <figcaption>
-            <a
-            href="mailto:pedro.tostessilva1@gmail.com"
-            target="_blank">
-              <strong>Envie um e-mail para:</strong>
-              <p>pedro.tostessilva1&#64;gmail.com</p>
-            </a>
-          </figcaption>
-      </figure>
-    </section>
-</aside>
+    <a href="mailto:pedro.tostessilva1@gmail.com" target="_blank" class="contact__card">
+      <img src="assets/icons/mail.svg" alt="" width="22" height="24">
+      <div>
+        <strong>E-mail</strong>
+        <p>pedro.tostessilva1&#64;gmail.com</p>
+      </div>
+    </a>
+  </div>
+</section>

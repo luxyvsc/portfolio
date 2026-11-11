@@ -1,18 +1,25 @@
 <app-header/>
 
 <main>
-  <app-knowledge/>
-  <app-experiences/>
+  <app-knowledge id="conhecimentos"/>
+  <app-experiences id="experiencias"/>
 
   @defer(on viewport) {
-    <app-projects/>
+    <app-projects id="projetos"/>
   }@placeholder {
-    <section>
-      <h2>Carregando todos os projetos desenvolvidos...</h2>
+    <section id="projetos" class="placeholder">
+      <p>{{ i18n.t('projects.loading') }}</p>
     </section>
   } @error {
-    <section>
-      <h2>Ocorreu um erro no download do componente, tente novamente...</h2>
+    <section class="placeholder">
+      <p>{{ i18n.t('projects.error') }}</p>
     </section>
   }
 </main>
+
+<footer>
+  <div class="container">
+    <p>© {{ year }} Pedro Tostes · {{ i18n.t('footer.madeWith') }}</p>
+    <a href="#inicio">{{ i18n.t('footer.backToTop') }}</a>
+  </div>
+</footer>

@@ -1,11 +1,15 @@
 <div class="container">
-  <h2>Conhecimentos</h2>
+  <div class="section-title">
+    <span>{{ i18n.t('skills.eyebrow') }}</span>
+    <h2>{{ i18n.t('skills.title') }}</h2>
+  </div>
 
   <ul>
-    @for(item of arrayKnowledge; track item) {
-    <li>
-      <img [src]="item.src" [alt]="item.alt" loading="lazy" width="22px" height="24px"/>
-    </li>
-  }
+    @for(item of arrayKnowledge; track item.name) {
+      <li>
+        <img [src]="item.src" [alt]="i18n.t('skills.iconAlt') + ' ' + item.name" loading="lazy" width="28" height="28"/>
+        <span>{{ item.name }}</span>
+      </li>
+    }
   </ul>
 </div>

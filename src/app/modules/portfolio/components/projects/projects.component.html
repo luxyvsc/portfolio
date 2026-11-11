@@ -1,15 +1,39 @@
-@if(arrayProjects[0]){
-  <div class="container">
-    <h2>Projetos Desenvolvidos</h2>
+<div class="container">
+  <div class="section-title">
+    <span>{{ i18n.t('projects.eyebrow') }}</span>
+    <h2>{{ i18n.t('projects.title') }}</h2>
+  </div>
 
-    <ul>
-      @for(item of arrayProjects; track item) {
-        <li>
-          <button (click)="openDialog(item)">
-            <h1>{{ item.title }}</h1>
+  <ul>
+    @for(source of projects; track source.title) {
+      @if(view(source); as item) {
+        <li class="card">
+          <button type="button" class="card__media" (click)="openDialog(source)" [attr.aria-label]="i18n.t('projects.detailsOf') + ' ' + item.title">
+            <img [src]="item.src" [alt]="item.alt" loading="lazy" [width]="item.width" [height]="item.height"/>
           </button>
+
+          <div class="card__body">
+            @if(item.subtitle) {
+              <small>{{ item.subtitle }}</small>
+            }
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.summary }}</p>
+
+            <ul class="tags">
+              @for(tag of item.tags; track tag) {
+                <li>{{ tag }}</li>
+              }
+            </ul>
+
+            <div class="card__actions">
+              <button type="button" class="btn btn-primary" (click)="openDialog(source)">{{ i18n.t('projects.details') }}</button>
+              @for(link of item.links.slice(0, 2); track link.href) {
+                <a [href]="link.href" target="_blank" rel="noopener" class="btn btn-ghost">{{ link.name }}</a>
+              }
+            </div>
+          </div>
         </li>
       }
-    </ul>
-  </div>
-}
+    }
+  </ul>
+</div>

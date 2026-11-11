@@ -1,13 +1,19 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 //material
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 //interface
-import { IProjects } from '../../interface/IProjects.interface';
+import { IProjectSource, localizeProject } from '../../interface/IProjects.interface';
+
+//data
+import { PROJECTS } from '../../data/projects.data';
 
 //enum
 import { EDialogPanelClass } from '../../enum/EDialogPanelClass.enum';
+
+//services
+import { I18nService } from '../../../../core/services/i18n.service';
 
 //dialog
 import { DialogProjectsComponent } from '../../dialog/dialog-projects/dialog-projects.component';
@@ -21,26 +27,14 @@ import { DialogProjectsComponent } from '../../dialog/dialog-projects/dialog-pro
 })
 export class ProjectsComponent {
   #dialog = inject(MatDialog);
-  #arrayProjects = signal<IProjects[]>([
-    {
-      src: 'assets/pokedex.png',
-      alt: 'Projeto pokedex',
-      title: 'Projeto Pokedex',
-      width: '160',
-      height: '160',
-      description: 'Esta aplicação é uma Pokédex desenvolvida em Angular que permite pesquisar, listar e visualizar detalhes de pokémons utilizando a PokeAPI. Com uma interface intuitiva, o usuário pode buscar pokémons pelo nome, navegar por uma lista paginada e acessar informações detalhadas de cada pokémon. O projeto demonstra integração com APIs REST, uso de componentes reutilizáveis e boas práticas de desenvolvimento frontend com Angular.',
-      links: [
-        { name: 'Site', href: 'https://pokemonlist-vsc377.rj.r.appspot.com' },
-        { name: 'GitHub', href: 'https://github.com/luxyvsc/pokemonsList' }
-      ]
-    }
-  ]);
+  public readonly i18n = inject(I18nService);
+  public readonly projects = PROJECTS;
 
-  get arrayProjects() {
-    return this.#arrayProjects();
+  public view(source: IProjectSource) {
+    return localizeProject(source, this.i18n.lang());
   }
 
-  public openDialog(data: IProjects) {
+  public openDialog(data: IProjectSource) {
     this.#dialog.open(DialogProjectsComponent, {
       data,
       panelClass: EDialogPanelClass.PROJECTS,

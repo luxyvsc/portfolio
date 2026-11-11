@@ -1,8 +1,11 @@
-import { Component, Inject, OnInit, signal } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 //interface
-import { IProjects } from '../../interface/IProjects.interface';
+import { IProjectSource, localizeProject } from '../../interface/IProjects.interface';
+
+//services
+import { I18nService } from '../../../../core/services/i18n.service';
 
 @Component({
   selector: 'app-dialog-projects',
@@ -12,16 +15,19 @@ import { IProjects } from '../../interface/IProjects.interface';
   styleUrl: './dialog-projects.component.scss'
 })
 export class DialogProjectsComponent {
-  #data: IProjects;
+  public readonly i18n = inject(I18nService);
+  #data: IProjectSource;
+
   constructor(
     private _dialogRef: MatDialogRef<DialogProjectsComponent>,
-    @Inject(MAT_DIALOG_DATA) data: IProjects
+    @Inject(MAT_DIALOG_DATA) data: IProjectSource
   ) {
     this.#data = data;
   }
 
+  /** Re-localized on every read, so the open dialog follows the language switch. */
   get getData() {
-    return this.#data;
+    return localizeProject(this.#data, this.i18n.lang());
   }
 
   public closeModal() {

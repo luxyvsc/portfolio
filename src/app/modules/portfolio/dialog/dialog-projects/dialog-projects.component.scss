@@ -1,58 +1,128 @@
 ::ng-deep .dialog-container-projects .mdc-dialog__container {
-  width: 850px;
+  width: 820px;
+  max-width: calc(100vw - 32px);
+}
+
+::ng-deep .dialog-container-projects .mat-mdc-dialog-surface {
+  background: var(--surface) !important;
+  border: 1px solid var(--border);
+  border-radius: 18px !important;
 }
 
 :host {
-  padding: 10px 30px;
   display: flex;
   flex-direction: column;
-
-  header, h3, p, mat-dialog-content {
-    padding: 0;
-    margin: 0 0 15px;
-  }
+  padding: 20px 24px 24px;
 
   header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+
+    small {
+      color: var(--primary-text);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
 
     h2 {
-      font-size: 22px;
+      font-size: 24px;
       padding: 0;
-      margin: 0;
-      color: var(--black-010);
+      margin: 4px 0 0;
+      color: var(--white);
+
+      &::before {
+        display: none;
+      }
     }
 
     button.close-btn {
-      background: none;
-      color: var(--black-010);
-      border: none;
+      flex-shrink: 0;
+      background: var(--surface-2);
+      color: var(--white);
+      border: 1px solid var(--border);
       border-radius: 50%;
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       padding: 0;
+      transition: border-color 0.2s, color 0.2s;
+
+      &:hover {
+        border-color: var(--primary);
+        color: var(--primary-text);
+      }
+    }
+  }
+
+  mat-dialog-content {
+    padding: 0 !important;
+    max-height: 70vh;
+  }
+
+  figure {
+    margin: 0 0 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    aspect-ratio: 16 / 9;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+
+    li {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--white);
+      padding: 4px 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
     }
   }
 
   h3 {
-    font-size: 18px;
-    color: var(--black-010);
+    font-size: 17px;
+    color: var(--white);
+    margin: 0 0 6px;
   }
 
   article {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    color: var(--grey);
+    line-height: 1.65;
 
-    p {
-      font-size: 16px;
+    ::ng-deep p {
+      font-size: 15px;
+    }
+
+    ::ng-deep strong {
+      color: var(--white);
     }
   }
 
   nav {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 }

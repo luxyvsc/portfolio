@@ -1,14 +1,22 @@
 <div class="container">
-  <h2>Últimas Experiências</h2>
-  @for(item of arrayExperiences; track item) {
-    <details>
-      <summary>
-        <p>
-          <strong>{{ item.summary.strong }}</strong>
-          {{ item.summary.p }}
-        </p>
-      </summary>
-      <article [innerHTML]="item.text"></article>
-    </details>
-  }
+  <div class="section-title">
+    <span>{{ i18n.t('experience.eyebrow') }}</span>
+    <h2>{{ i18n.t('experience.title') }}</h2>
+  </div>
+
+  <ol class="timeline">
+    @for(item of arrayExperiences; track $index; let first = $first) {
+      <li>
+        <details [open]="first">
+          <summary>
+            <div>
+              <strong>{{ item.summary.strong }}</strong>
+              <small>{{ item.summary.p }}</small>
+            </div>
+          </summary>
+          <article [innerHTML]="item.text"></article>
+        </details>
+      </li>
+    }
+  </ol>
 </div>
